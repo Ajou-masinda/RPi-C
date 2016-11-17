@@ -1,0 +1,6 @@
+# .travis.yml 
+language: c
+compiler:
+  - gcc
+script:
+  - make
