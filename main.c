@@ -11,6 +11,8 @@
 #include <stdint.h>
 #define MAXTIMINGS	85
 #define DHTPIN		7
+#define DURATION	1 // 1s
+
 int dht11_dat[5] = { 0, 0, 0, 0, 0 };
 
 int read_dht11_dat()
@@ -102,7 +104,8 @@ int main( void )
 			sprintf(query, "curl -H \"Content-Type: application/json\" -X POST -d '{\"metric\":\"test.test\",\"timestamp\":%ld, \"value\":%d, \"tags\" : {\"host\":\"house1_hum\"}}' http://127.0.0.1:4242/api/put", ts, dht11_dat[0]); 	
 			system(query);
 			sprintf(query, "curl -H \"Content-Type: application/json\" -X POST -d '{\"metric\":\"test.test\",\"timestamp\":%ld, \"value\":%d, \"tags\" : {\"host\":\"house1_temp\"}}' http://127.0.0.1:4242/api/put", ts, dht11_dat[2]); 	
-			sleep(300);
+			system(query);
+			sleep(DURATION);
 		}
 		else if(ret == 0)
 		{
@@ -110,5 +113,5 @@ int main( void )
 		}		
 	}
 
-	return (0);
+	return(0);
 }
