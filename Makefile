@@ -4,7 +4,7 @@ TARGET=dht11
 
 all : $(TARGET)
 $(TARGET):$(OBJS)
-	$(CC) -o $@ $(OBJS) -lwiringPi
+	$(CC) -pthread -o $@ $(OBJS) -lwiringPi
 
 clean:
 	rm -f $(OBJS) $(TARGET)
