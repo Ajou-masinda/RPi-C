@@ -1,11 +1,13 @@
 # .travis.yml 
 language: c
+sudo: true
 install:
     - git clone git://git.drogon.net/wiringPi
     - cd wiringPi
     - git pull origin
     - ./build
-    
-script:
+    - cd ..
     - make
-    - sudo ./dht11
+
+script:
+    - dht11
